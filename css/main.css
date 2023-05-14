@@ -3468,6 +3468,7 @@ input.num-product::-webkit-inner-spin-button {
   width: calc(100% - 80px);
 }
 
+
 .header-wishlist-item-name {
   display: block;
   font-family: Poppins-Regular;
@@ -3482,6 +3483,13 @@ input.num-product::-webkit-inner-spin-button {
   font-size: 14px;
   color: #888;
   line-height: 1.5;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.header-wishlist-item-details {
+  display: flex;
+  align-items: center;
 }
 
 .header-wishlist-total {
@@ -3489,6 +3497,25 @@ input.num-product::-webkit-inner-spin-button {
   font-size: 18px;
   color: #222;
   line-height: 1.3;
+}
+
+.add-to-cart-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #000000;
+  background-color: #ffffff;
+  border: solid 2px black;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #000000;
+  color: rgb(255, 255, 255);
 }
 
 /*---------------------------------------------*/
