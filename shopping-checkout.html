@@ -413,7 +413,7 @@
     </div>
 
     <!-- payment -->
-    <div class="pay">
+    <form action="home.html">
         <div>
             <div class='container1'>
                 <div class='window1'>
@@ -424,20 +424,16 @@
                             <table class='order-table'>
                                 <tbody>
                                     <tr>
-                                        <td><img src='https://dl.dropboxusercontent.com/s/sim84r2xfedj99n/%24_32.JPG'
-                                                class='full-width'></img>
+                                        <td>
+                                            <img class='full-width' src="images/item-cart-04.jpg" alt="IMG"></img>
                                         </td>
                                         <td>
-                                            <br> <span class='thin'>Nike</span>
-                                            <br> Free Run 3.0 Women<br> <span class='thin small'> Color: Grey/Orange,
-                                                Size:
-                                                10.5<br><br></span>
+                                            <br> <span class="thin">Fresh Strawberries</span>
                                         </td>
-
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class='price'>$99.95</div>
+                                            <div class='price'>$ 36.00</div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -447,39 +443,16 @@
                             <table class='order-table'>
                                 <tbody>
                                     <tr>
-                                        <td><img src='https://dl.dropboxusercontent.com/s/qbj9tsbvthqq72c/Vintage-20L-Backpack-by-Fj%C3%A4llr%C3%A4ven.jpg'
-                                                class='full-width'></img>
+                                        <td>
+                                            <img class='full-width' src='images/item-cart-05.jpg'></img>
                                         </td>
                                         <td>
-                                            <br> <span class='thin'>Fjällräven</span>
-                                            <br>Vintage Backpack<br> <span class='thin small'> Color: Olive, Size:
-                                                20L</span>
+                                            <br> <span class='thin'>Lightweight Jacket</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class='price'>$235.95</div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class='line'></div>
-                            <table class='order-table'>
-                                <tbody>
-                                    <tr>
-                                        <td><img src='https://dl.dropboxusercontent.com/s/nbr4koso8dpoggs/6136C1p5FjL._SL1500_.jpg'
-                                                class='full-width'></img>
-                                        </td>
-                                        <td>
-                                            <br> <span class='thin'>Monobento</span>
-                                            <br>Double Lunchbox<br> <span class='thin small'> Color: Pink, Size:
-                                                Medium</span>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class='price'>$25.95</div>
+                                            <div class='price'>$ 16.00</div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -533,16 +506,34 @@
                                     </td>
                                 </tr>
                             </table>
-                            <button class='pay-btn'>Checkout</button>
-
+                            <button class='pay-btn' type="button" data-bs-toggle="modal"
+                                data-bs-target="#COModal">Checkout</button>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- payment -->
+        <!-- Modal -->
+        <div class="modal fade" id="COModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Thank You</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Your order will be processed as soon as possible
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="pay-btn">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <!-- end payment -->
 
 
 
