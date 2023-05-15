@@ -235,6 +235,10 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     line-height: 1.8;
     color: #b2b2b2;
   }
+
+  .zmdi-favorite-outline{
+    color:#6774d5;
+  }
   
   
   /*---------------------------------------------*/
