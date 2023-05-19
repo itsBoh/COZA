@@ -3560,8 +3560,9 @@ h2 {
   display:-webkit-flex;
   display:-ms-flexbox;
   display:flex;
-  background:-webkit-linear-gradient(#c5e5e5, #ccddf9);
-  background:linear-gradient(#c9e5e9,#ccddf9);
+  background:-webkit-linear-gradient(#ffffff, #ccddf900);
+  background:linear-gradient(#c9e5e900,#ccddf900);
+  margin:
 }
 .dropdown-select.visible {
   display:block;
