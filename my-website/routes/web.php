@@ -46,8 +46,8 @@ Route::get('product-detail', function(){
 Route::get('product', function(){
     return view('product');
 });
-Route::get('registrasi', function(){
-    return view('registrasi');
+Route::get('Registrasi', function(){
+    return view('Registrasi');
 });
 Route::get('shoping-cart', function(){
     return view('shoping-cart');

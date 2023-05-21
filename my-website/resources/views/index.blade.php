@@ -51,7 +51,7 @@
             data-image-height="213">
           <div class="u-form u-login-control u-block-22fd-49" data-animation-name="" data-animation-duration="0"
             data-animation-delay="0" data-animation-direction="">
-            <form action="home.html" method="POST"
+            <form action="home" method="POST"
               class="u-clearfix u-form-custom-backend u-form-spacing-20 u-form-vertical u-inner-form" source="custom"
               name="formLogin" style="padding: 30px;" data-services="" redirect="true">
               <div class="u-form-group u-form-name u-block-22fd-50">
@@ -72,7 +72,7 @@
               </div>
 
               <div class="u-form-group u-form-submit u-block-22fd-58">
-                <a href="{{ url('#') }}"
+                <a href="{{ url('home') }}"
                   class="u-active-palette-1-light-2 u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-montserrat u-hover-palette-1-light-1 u-palette-1-dark-2 u-radius-50 u-text-hover-palette-1-light-3 u-block-22fd-59"
                   data-animation-name="" data-animation-duration="0" data-animation-delay="0"
                   data-animation-direction="">Login</a>
@@ -82,9 +82,9 @@
               <input type="hidden" id="siteId" name="siteId" value="4851710">
               <input type="hidden" id="pageId" name="pageId" value="4853420">
             </form>
-          </div><a href="{{ url('Forgot-Password.html') }}"
+          </div><a href="{{ url('Forgot-Password') }}"
             class="u-border-active-palette-2-base u-border-hover-palette-1-base u-border-none u-btn u-button-style u-login-control u-login-forgot-password u-none u-text-grey-40 u-text-hover-palette-4-base u-block-22fd-60">Forgot
-            password?</a><a href="{{ url('Registrasi.html') }}"
+            password?</a><a href="{{ url('Registrasi') }}"
             class="u-border-active-palette-2-base u-border-hover-palette-1-base u-border-none u-btn u-button-style u-login-control u-login-create-account u-none u-text-grey-40 u-text-hover-palette-4-base u-block-22fd-61">Don't
             have an account?<br>Create your account</a>
         </div>

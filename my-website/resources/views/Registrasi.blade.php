@@ -7,8 +7,8 @@
   <meta name="keywords" content="">
   <meta name="description" content="">
   <title>Registrasi</title>
-  <link rel="stylesheet" href="{{ asset('/initial.css') }}" media="screen">
-  <link rel="stylesheet" href="{{ asset('/Registrasi.css') }}" media="screen">
+  <link rel="stylesheet" href="{{ asset('css/initial.css') }}" media="screen">
+  <link rel="stylesheet" href="{{ asset('css/Registrasi.css') }}" media="screen">
   <script class="u-script" type="text/javascript" src="{{ asset('/jquery-1.9.1.min.js') }}" defer=""></script>
   <script class="u-script" type="text/javascript" src="{{ asset('/initial.js') }}" defer=""></script>
   <meta name="referrer" content="origin">
