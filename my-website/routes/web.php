@@ -37,9 +37,6 @@ Route::get('contact', function(){
 Route::get('Forgot-Password', function(){
     return view('Forgot-Password');
 });
-Route::get('home', function(){
-    return view('home');
-});
 Route::get('product-detail', function(){
     return view('product-detail');
 });
@@ -60,4 +57,7 @@ Route::get('shopping-checkout', function(){
 });
 Route::get('Terms-of-Service', function(){
     return view('Terms-of-Service');
+});
+Route::get('login', function(){
+    return view('login');
 });

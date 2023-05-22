@@ -54,7 +54,7 @@
 						<a href="{{ url('account-profile') }}" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
-						<a href="{{ url('index') }}" class="flex-c-m trans-04 p-lr-25">
+						<a href="{{ url('login') }}" class="flex-c-m trans-04 p-lr-25">
 							Log In
 						</a>
 					</div>
@@ -65,7 +65,7 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="{{ url('home') }}" class="logo">
+					<a href="{{ url('index') }}" class="logo">
 						<img src="{{ asset('/images/icons/logo-01.png') }}" alt="IMG-LOGO">
 					</a>
 
@@ -73,9 +73,9 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="{{ url('index') }}">Home</a>
+								<a href="{{ url('login') }}">Home</a>
 								<ul class="sub-menu">
-									<li><a href="{{ url('index') }}">Homepage 1</a></li>
+									<li><a href="{{ url('login') }}">Homepage 1</a></li>
 									<li><a href="{{ url('home-02') }}">Homepage 2</a></li>
 									<li><a href="{{ url('home-03') }}">Homepage 3</a></li>
 								</ul>
@@ -127,7 +127,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->
 			<div class="logo-mobile">
-				<a href="{{ url('index') }}"><img src="{{ asset('/images/icons/logo-01.png') }}" alt="IMG-LOGO"></a>
+				<a href="{{ url('login') }}"><img src="{{ asset('/images/icons/logo-01.png') }}" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -170,7 +170,7 @@
 						<a href="{{ url('account-profile') }}" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
-						<a href="{{ url('index') }}" class="flex-c-m trans-04 p-lr-25">
+						<a href="{{ url('login') }}" class="flex-c-m trans-04 p-lr-25">
 							Log In
 						</a>
 					</div>
@@ -178,7 +178,7 @@
 			</ul>
 			<ul class="main-menu-m">
 				<li>
-					<a href="{{ url('home') }}">Home</a>
+					<a href="{{ url('index') }}">Home</a>
 				</li>
 
 				<li>
@@ -307,7 +307,7 @@
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="{{ url('index') }}" class="stext-109 cl8 hov-cl1 trans-04">
+			<a href="{{ url('login') }}" class="stext-109 cl8 hov-cl1 trans-04">
 				Home
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>

@@ -176,14 +176,14 @@
                   class="u-active-palette-1-light-2 u-border-none u-btn u-btn-round u-btn-step u-btn-step-prev u-button-style u-hover-palette-1-light-3 u-radius-50 u-text-active-grey-10 u-text-body-alt-color u-text-hover-black u-block-104c-72">Back</a><a
                   href="{{ url('#') }}"
                   class="u-active-palette-1-light-2 u-border-none u-btn u-btn-round u-btn-step u-btn-step-next u-button-style u-hover-palette-1-light-3 u-radius-50 u-text-active-grey-5 u-text-body-alt-color u-text-hover-black u-block-104c-72">Next</a>
-                <a href="{{ url('index') }}" onclick="location.href='index';"
+                <a href="{{ url('login') }}" onclick="location.href='index';"
                   class="u-active-palette-1-light-2 u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-montserrat u-hover-palette-1-light-1 u-palette-1-dark-2 u-radius-50 u-text-hover-palette-1-light-3 u-block-104c-72">Sign
                   Up</a>
                 <input type="submit" value="submit" class="u-form-control-hidden">
               </div>
               <input type="hidden" value="" name="recaptchaResponse">
             </form>
-          </div><a href="{{ url('index') }}"
+          </div><a href="{{ url('login') }}"
             class="u-active-palette-1-light-3 u-align-center u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-2 u-palette-5-dark-2 u-radius-50 u-text-active-palette-1-dark-1 u-text-hover-palette-1-dark-2 u-text-palette-1-light-3 u-block-104c-120">Back
             to Login</a>
         </div>
