@@ -38,9 +38,10 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'customers', // Use the custom user provider
         ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -64,11 +65,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+    
+        'custom' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\CustomUser::class,
+        ],
     ],
 
     /*
@@ -111,5 +112,14 @@ return [
     */
 
     'password_timeout' => 10800,
+
+
+    'providers' => [
+        'customers' => [
+            'driver' => 'custom',
+            'model' => App\Models\Customer::class,
+            'table' => 'customer',
+        ],
+    ],
 
 ];

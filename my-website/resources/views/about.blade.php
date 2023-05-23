@@ -59,7 +59,7 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="{{ url('home') }}" class="logo">
+					<a href="{{ url('index') }}" class="logo">
 						<img src="{{ asset('/images/icons/logo-01.png') }}" alt="IMG-LOGO">
 					</a>
 
@@ -67,7 +67,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="{{ url('home') }}">Home</a>
+								<a href="{{ url('index') }}">Home</a>
 							</li>
 
 							<li>
@@ -163,7 +163,7 @@
 			</ul>
 			<ul class="main-menu-m">
 				<li>
-					<a href="{{ url('home') }}">Home</a>
+					<a href="{{ url('index') }}">Home</a>
 				</li>
 
 				<li>

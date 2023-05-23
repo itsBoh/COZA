@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomAuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,45 +21,53 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
-Route::get('/index', function(){
+Route::get('/index', function () {
     return view('index');
 });
-Route::get('account-password', function(){
+Route::get('account-password', function () {
     return view('account-password');
 });
-Route::get('account-profile', function(){
+Route::get('account-profile', function () {
     return view('account-profile');
 });
-Route::get('account-transaction', function(){
+Route::get('account-transaction', function () {
     return view('account-transaction');
 });
-Route::get('contact', function(){
+Route::get('contact', function () {
     return view('contact');
 });
-Route::get('Forgot-Password', function(){
+Route::get('Forgot-Password', function () {
     return view('Forgot-Password');
 });
-Route::get('home', function(){
-    return view('home');
+Route::get('home', function () {
+    return view('index');
 });
-Route::get('product-detail', function(){
+Route::get('product-detail', function () {
     return view('product-detail');
 });
-Route::get('product', function(){
+Route::get('product', function () {
     return view('product');
 });
-Route::get('Registrasi', function(){
+Route::get('Registrasi', function () {
     return view('Registrasi');
 });
-Route::get('shoping-cart', function(){
+Route::get('shoping-cart', function () {
     return view('shoping-cart');
 });
-Route::get('wishlist', function(){
+Route::get('wishlist', function () {
     return view('wishlist');
 });
-Route::get('shopping-checkout', function(){
+Route::get('shopping-checkout', function () {
     return view('shopping-checkout');
 });
-Route::get('Terms-of-Service', function(){
+Route::get('Terms-of-Service', function () {
     return view('Terms-of-Service');
 });
+Route::get('login', function () {
+    return view('login');
+});
+
+Route::get('/registration', [CustomAuthController::class, 'registration']);
+Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-user');
+Route::get('/data', 'App\Http\Controllers\displayCust@index');
+Route::get('/login', [CustomAuthController::class, 'login']);
