@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
-
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,11 +64,10 @@ Route::get('shopping-checkout', function () {
 Route::get('Terms-of-Service', function () {
     return view('Terms-of-Service');
 });
-Route::get('login', function () {
-    return view('login');
-});
 
 Route::get('/registration', [CustomAuthController::class, 'registration']);
 Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-user');
 Route::get('/data', 'App\Http\Controllers\displayCust@index');
 Route::get('/login', [CustomAuthController::class, 'login']);
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

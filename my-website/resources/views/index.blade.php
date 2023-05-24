@@ -75,7 +75,7 @@
 							</li>
 
 							<li>
-								<a href="{{ url('product') }}">Shop</a>
+								<a href="{{ url('products') }}">Shop</a>
 							</li>
 
 							<li>

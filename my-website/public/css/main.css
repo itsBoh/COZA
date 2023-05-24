@@ -3807,3 +3807,45 @@ ul li:hover {
     border-radius:0px;
   }
 }
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-buttons .pagination {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination-buttons .pagination li {
+  margin: 0;
+  padding: 0;
+}
+
+.pagination-buttons .pagination li .pagination-previous,
+.pagination-buttons .pagination li .pagination-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  margin: 0 5px;
+  background-color: #ddd;
+  border: none;
+  color: #333;
+  text-decoration: none;
+}
+
+.pagination-buttons .pagination li .pagination-previous.disabled,
+.pagination-buttons .pagination li .pagination-next.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
