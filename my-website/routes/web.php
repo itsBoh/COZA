@@ -4,7 +4,13 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\displayCartProducts;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,14 +22,9 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+
 Route::get('/about', function () {
     return view('about');
-});
-Route::get('/index', function () {
-    return view('index');
 });
 Route::get('account-password', function () {
     return view('account-password');
@@ -40,9 +41,6 @@ Route::get('contact', function () {
 Route::get('Forgot-Password', function () {
     return view('Forgot-Password');
 });
-Route::get('home', function () {
-    return view('index');
-});
 Route::get('product-detail', function () {
     return view('product-detail');
 });
@@ -52,8 +50,8 @@ Route::get('product', function () {
 Route::get('Registrasi', function () {
     return view('Registrasi');
 });
-Route::get('shoping-cart', function () {
-    return view('shoping-cart');
+Route::get('shopping-cart', function () {
+    return view('shopping-cart');
 });
 Route::get('wishlist', function () {
     return view('wishlist');
@@ -64,10 +62,25 @@ Route::get('shopping-checkout', function () {
 Route::get('Terms-of-Service', function () {
     return view('Terms-of-Service');
 });
+Route::get('main', function () {
+    return view('main');
+});
 
 Route::get('/registration', [CustomAuthController::class, 'registration']);
 Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-user');
 Route::get('/data', 'App\Http\Controllers\displayCust@index');
-Route::get('/login', [CustomAuthController::class, 'login']);
 Route::get('/products', [ProductController::class, 'index']);
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [CustomAuthController::class, 'loginUser'])->name('login-user');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    
+Route::get('/cart', [CartController::class, 'show'])->name('cart-shopping')->middleware('auth');
+Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+Route::get('/checkouts', [CartController::class, 'checkout'])->name('cart-checkout')->middleware('auth');
+Route::post('/cart/ipdateWishlist', [CartController::class, 'updateWishlist'])->name('cart.updateWishlist');
+
+
+Route::get('/index', [HomeController::class, 'index'])->name('main');
+Route::get('/', [HomeController::class, 'index'])->name('main');

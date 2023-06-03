@@ -49,12 +49,19 @@
 						Gratis ongkir dengan minimum pembelanjaan Rp 500.000
 					</div>
 					<div class="right-top-bar flex-w h-full">
+						@if(session('customer'))
+						<h3 class="flex-c-m trans-04 p-lr-25">Hi, welcome back {{ session('customer')->CUST_ID }}</h3>
 						<a href="{{ url('account-profile') }}" class="flex-c-m trans-04 p-lr-25">
 							My Account
 						</a>
+						<a href="{{ route('logout') }}" class="flex-c-m trans-04 p-lr-25">
+							Log Out
+						</a>
+						@else
 						<a href="{{ url('login') }}" class="flex-c-m trans-04 p-lr-25">
 							Log In
 						</a>
+						@endif
 					</div>
 				</div>
 			</div>
@@ -70,7 +77,7 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu">
+							<li>
 								<a href="{{ url('index') }}">Home</a>
 							</li>
 
@@ -79,7 +86,7 @@
 							</li>
 
 							<li>
-								<a href="{{ url('shoping-cart') }}">Cart</a>
+								<a href="{{ url('cart') }}">Cart</a>
 							</li>
 
 							<li>
@@ -98,13 +105,11 @@
 							<i class="zmdi zmdi-search"></i>
 						</div>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-							data-notify="2">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<div class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-wishlist"
-							data-notify="0" id="wishlist-btn">
+						<div class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-wishlist" data-notify="0" id="wishlist-btn">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						</div>
 					</div>
@@ -125,13 +130,11 @@
 					<i class="zmdi zmdi-search"></i>
 				</div>
 
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-					data-notify="2">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-wishlist"
-					data-notify="0">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-wishlist" data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>
 				</div>
 			</div>
@@ -222,53 +225,24 @@
 
 			<div class="header-cart-content flex-w js-pscroll">
 				<ul class="header-cart-wrapitem w-full">
+					@if(session('customer'))
+					@foreach($results as $result)
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
 							<img src="{{ asset('/images/item-cart-01.jpg') }}" alt="IMG">
 						</div>
-
 						<div class="header-cart-item-txt p-t-8">
 							<a href="{{ url('#') }}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								White Shirt Pleat
+								{{$result->PROD_NAME}}
 							</a>
 
 							<span class="header-cart-item-info">
-								1 x Rp 190.000
+								{{$result->CART_QTY}} x Rp {{$result->PROD_PRICE}}
 							</span>
 						</div>
 					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="{{ asset('/images/item-cart-02.jpg') }}" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="{{ url('#') }}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Converse All Star
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x Rp 390.000
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="{{ asset('/images/item-cart-03.jpg') }}" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="{{ url('#') }}" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Nixon Porter Leather
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x Rp 170.000
-							</span>
-						</div>
-					</li>
+					@endforeach
+					@endif
 				</ul>
 
 				<div class="w-full">
@@ -277,13 +251,11 @@
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
-						<a href="{{ url('shoping-cart') }}"
-							class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						<a href="{{ url('shoping-cart') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 							View Cart
 						</a>
 
-						<a href="{{ url('shoping-cart') }}"
-							class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+						<a href="{{ url('shoping-cart') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 							Check Out
 						</a>
 					</div>
@@ -293,6 +265,7 @@
 	</div>
 
 	<!--- Wishlist Sidebar-->
+
 	<div class="wrap-header-wishlist js-panel-wishlist">
 		<div class="s-full js-hide-wishlist"></div>
 
@@ -308,80 +281,38 @@
 			</div>
 			<div class="header-wishlist-content flex-w js-pscroll">
 				<ul class="header-wishlist-wrapitem w-full">
-					<li class="header-wishlist-item flex-w flex-t m-b-12">
-						<div class="header-wishlist-item-img">
-							<img src="{{ asset('/images/item-cart-01.jpg') }}" alt="IMG">
-						</div>
-
-						<div class="header-wishlist-item-txt p-t-8">
-							<a href="{{ url('#') }}" class="header-wishlist-item-name m-b-18 hov-cl1 trans-04">
-								White Shirt Pleat
-							</a>
-							<div class="header-wishlist-item-details">
-								<span class="header-wishlist-item-info">
-									Rp 190.000
-								</span>
-
-								<button class="add-to-cart-btn" data-product-name="White Shirt Pleat"
-									data-product-price="19.00">Add to Cart</button>
+					@if(session('customer'))
+					@foreach($wishlists as $key => $wishlist)
+					<form action="" method="get">
+						<li class="header-wishlist-item flex-w flex-t m-b-12">
+							<div class="header-wishlist-item-img">
+								<img src="{{ asset('/images/item-cart-01.jpg') }}" alt="IMG">
 							</div>
-						</div>
-					</li>
-
-					<li class="header-wishlist-item flex-w flex-t m-b-12">
-						<div class="header-wishlist-item-img">
-							<img src="{{ asset('/images/item-cart-02.jpg') }}" alt="IMG">
-						</div>
-
-						<div class="header-wishlist-item-txt p-t-8">
-							<a href="{{ url('#') }}" class="header-wishlist-item-name m-b-18 hov-cl1 trans-04">
-								Converse All Star
-							</a>
-							<div class="header-wishlist-item-details">
-								<span class="header-wishlist-item-info">
-									Rp 390.000
-								</span>
-
-								<button class="add-to-cart-btn" data-product-name="Converse All Star"
-									data-product-price="39.00">Add to Cart</button>
+							<input type="hidden" name="prodid{{$key}}" value="">
+							<div class="header-wishlist-item-txt p-t-8">
+								<a href="{{ url('#') }}" class="header-wishlist-item-name m-b-18 hov-cl1 trans-04">
+									{{$wishlist->PROD_NAME}}
+								</a>
+								<div class="header-wishlist-item-details">
+									<span class="header-wishlist-item-info">
+										Rp {{$wishlist->PROD_PRICE}}
+									</span>
+									<button class="add-to-cart-btn" type="submit">Add to Cart</button>
+								</div>
 							</div>
-						</div>
-					</li>
-
-					<li class="header-wishlist-item flex-w flex-t m-b-12">
-						<div class="header-wishlist-item-img">
-							<img src="{{ asset('/images/item-cart-03.jpg') }}" alt="IMG">
-						</div>
-
-						<div class="header-wishlist-item-txt p-t-8">
-							<a href="{{ url('#') }}" class="header-wishlist-item-name m-b-18 hov-cl1 trans-04">
-								Nixon Porter Leather
-							</a>
-							<div class="header-wishlist-item-details">
-								<span class="header-wishlist-item-info">
-									Rp 170.000
-								</span>
-
-								<button class="add-to-cart-btn" data-product-name="Nixon Porter Leather"
-									data-product-price="17.00">Add to Cart</button>
-							</div>
-						</div>
-					</li>
+						</li>
+					</form>
+					@endforeach
+					@endif
 				</ul>
 				<div class="w-full">
 					<div class="header-wish-total w-full p-tb-40">
 						5 Other Products in Wishlist
 					</div>
-
 					<div class="header-wish-buttons flex-w w-full">
-						<a href="{{ url('wishlist') }}"
-							class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						<a href="{{ view('wishlist') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 							View Wishlist
 						</a>
-
-						<!-- <a href="{{ url('wishlist') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-								Check Out
-							</a> -->
 					</div>
 				</div>
 			</div>
@@ -409,8 +340,7 @@
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-								<a href="{{ url('product') }}"
-									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="{{ url('product') }}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now
 								</a>
 							</div>
@@ -427,16 +357,14 @@
 								</span>
 							</div>
 
-							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn"
-								data-delay="800">
+							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
 									Jackets & Coats
 								</h2>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
-								<a href="{{ url('product') }}"
-									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="{{ url('product') }}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now
 								</a>
 							</div>
@@ -447,23 +375,20 @@
 				<div class="item-slick1" style="background-image: url(images/slide-03.jpg);">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft"
-								data-delay="0">
+							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
 									Men Collection 2023
 								</span>
 							</div>
 
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight"
-								data-delay="800">
+							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
 									New arrivals
 								</h2>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-								<a href="{{ url('product') }}"
-									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="{{ url('product') }}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now
 								</a>
 							</div>
@@ -484,8 +409,7 @@
 					<div class="block1 wrap-pic-w">
 						<img src="{{ asset('/images/banner-01.jpg') }}" alt="IMG-BANNER">
 
-						<a href="{{ url('product') }}"
-							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<a href="{{ url('product') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
 									Women
@@ -510,8 +434,7 @@
 					<div class="block1 wrap-pic-w">
 						<img src="{{ asset('/images/banner-02.jpg') }}" alt="IMG-BANNER">
 
-						<a href="{{ url('product') }}"
-							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<a href="{{ url('product') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
 									Men
@@ -536,8 +459,7 @@
 					<div class="block1 wrap-pic-w">
 						<img src="{{ asset('/images/banner-03.jpg') }}" alt="IMG-BANNER">
 
-						<a href="{{ url('product') }}"
-							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<a href="{{ url('product') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
 									Accessories
@@ -598,8 +520,7 @@
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
-					<div
-						class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
 						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
 						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
 						Filter
@@ -619,8 +540,7 @@
 							<i class="zmdi zmdi-search"></i>
 						</button>
 
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product"
-							placeholder="Search">
+						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
 					</div>
 				</div>
 
@@ -789,28 +709,23 @@
 							</div>
 
 							<div class="flex-w p-t-4 m-r--5">
-								<a href="{{ url('#') }}"
-									class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+								<a href="{{ url('#') }}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
 									Fashion
 								</a>
 
-								<a href="{{ url('#') }}"
-									class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+								<a href="{{ url('#') }}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
 									Lifestyle
 								</a>
 
-								<a href="{{ url('#') }}"
-									class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+								<a href="{{ url('#') }}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
 									Denim
 								</a>
 
-								<a href="{{ url('#') }}"
-									class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+								<a href="{{ url('#') }}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
 									Streetstyle
 								</a>
 
-								<a href="{{ url('#') }}"
-									class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+								<a href="{{ url('#') }}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
 									Crafts
 								</a>
 							</div>
@@ -826,8 +741,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-01.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -845,10 +759,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -861,8 +773,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-02.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -880,10 +791,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -896,8 +805,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-03.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -915,10 +823,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -931,8 +837,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-04.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -950,10 +855,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -966,8 +869,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-05.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -985,10 +887,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -1001,8 +901,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-06.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -1020,10 +919,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -1036,8 +933,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-07.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -1055,10 +951,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -1071,8 +965,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-08.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -1090,10 +983,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -1106,8 +997,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-09.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -1125,10 +1015,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -1141,8 +1029,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-10.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -1160,10 +1047,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -1176,8 +1061,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-11.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -1195,10 +1079,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -1211,8 +1093,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-12.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -1230,10 +1111,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -1246,8 +1125,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-13.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -1265,10 +1143,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -1281,8 +1157,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-14.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -1300,10 +1175,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -1316,8 +1189,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-15.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -1335,10 +1207,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -1351,8 +1221,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('/images/product-16.jpg') }}" alt="IMG-PRODUCT">
 
-							<a href="{{ url('#') }}"
-								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a href="{{ url('#') }}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
 						</div>
@@ -1370,10 +1239,8 @@
 
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="{{ url('#') }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}"
-										alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="{{ asset('/images/icons/icon-heart-01.png') }}" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('/images/icons/icon-heart-02.png') }}" alt="ICON">
 								</a>
 							</div>
 						</div>
@@ -1515,8 +1382,7 @@
 
 					<form>
 						<div class="wrap-input1 w-full p-b-4">
-							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email"
-								placeholder="email@example.com">
+							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
 							<div class="focus-input1 trans-04"></div>
 						</div>
 
@@ -1543,7 +1409,9 @@
 
 				<p class="stext-107 cl6 txt-center">
 					Copyright &copy;
-					<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by
+					<script>
+						document.write(new Date().getFullYear());
+					</script> All rights reserved | Made by
 					MonoMode</a>
 
 				</p>
@@ -1581,8 +1449,7 @@
 										<div class="wrap-pic-w pos-relative">
 											<img src="{{ asset('/images/product-detail-01.jpg') }}" alt="IMG-PRODUCT">
 
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="{{ url('images/product-detail-01.jpg') }}">
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ url('images/product-detail-01.jpg') }}">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -1592,8 +1459,7 @@
 										<div class="wrap-pic-w pos-relative">
 											<img src="{{ asset('/images/product-detail-02.jpg') }}" alt="IMG-PRODUCT">
 
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="{{ url('images/product-detail-02.jpg') }}">
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ url('images/product-detail-02.jpg') }}">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -1603,8 +1469,7 @@
 										<div class="wrap-pic-w pos-relative">
 											<img src="{{ asset('/images/product-detail-03.jpg') }}" alt="IMG-PRODUCT">
 
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="{{ url('images/product-detail-03.jpg') }}">
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ url('images/product-detail-03.jpg') }}">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -1676,16 +1541,14 @@
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
 
-											<input class="mtext-104 cl3 txt-center num-product" type="number"
-												name="num-product" value="1">
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
 
 											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
 
-										<button
-											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+										<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 											Add to cart
 										</button>
 									</div>
@@ -1695,25 +1558,20 @@
 							<!--  -->
 							<div class="flex-w flex-m p-l-100 p-t-40 respon7">
 								<div class="flex-m bor9 p-r-10 m-r-11">
-									<a href="{{ url('#') }}"
-										class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-										data-tooltip="Add to Wishlist">
+									<a href="{{ url('#') }}" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
 										<i class="zmdi zmdi-favorite"></i>
 									</a>
 								</div>
 
-								<a href="{{ url('#') }}" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Facebook">
+								<a href="{{ url('#') }}" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
 									<i class="fa fa-facebook"></i>
 								</a>
 
-								<a href="{{ url('#') }}" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Twitter">
+								<a href="{{ url('#') }}" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
 									<i class="fa fa-twitter"></i>
 								</a>
 
-								<a href="{{ url('#') }}" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Google Plus">
+								<a href="{{ url('#') }}" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
 									<i class="fa fa-google-plus"></i>
 								</a>
 							</div>
@@ -1734,7 +1592,7 @@
 	<!--===============================================================================================-->
 	<script src="{{ asset('/vendor/select2/select2.min.js') }}"></script>
 	<script>
-		$(".js-select2").each(function () {
+		$(".js-select2").each(function() {
 			$(this).select2({
 				minimumResultsForSearch: 20,
 				dropdownParent: $(this).next('.dropDownSelect2')
@@ -1755,7 +1613,7 @@
 	<!--===============================================================================================-->
 	<script src="{{ asset('/vendor/MagnificPopup/jquery.magnific-popup.min.js') }}"></script>
 	<script>
-		$('.gallery-lb').each(function () { // the containers for all your galleries
+		$('.gallery-lb').each(function() { // the containers for all your galleries
 			$(this).magnificPopup({
 				delegate: 'a', // the selector for gallery item
 				type: 'image',
@@ -1771,13 +1629,13 @@
 	<!--===============================================================================================-->
 	<script src="{{ asset('/vendor/sweetalert/sweetalert.min.js') }}"></script>
 	<script>
-		$('.js-addwish-b2').on('click', function (e) {
+		$('.js-addwish-b2').on('click', function(e) {
 			e.preventDefault();
 		});
 
-		$('.js-addwish-b2').each(function () {
+		$('.js-addwish-b2').each(function() {
 			var nameProduct = $(this).parent().parent().find('.js-name-b2')();
-			$(this).on('click', function () {
+			$(this).on('click', function() {
 				swal(nameProduct, "is added to wishlist !", "success");
 
 				$(this).addClass('js-addedwish-b2');
@@ -1785,10 +1643,10 @@
 			});
 		});
 
-		$('.js-addwish-detail').each(function () {
+		$('.js-addwish-detail').each(function() {
 			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail')();
 
-			$(this).on('click', function () {
+			$(this).on('click', function() {
 				swal(nameProduct, "is added to wishlist !", "success");
 
 				$(this).addClass('js-addedwish-detail');
@@ -1798,18 +1656,17 @@
 
 		/*---------------------------------------------*/
 
-		$('.js-addcart-detail').each(function () {
+		$('.js-addcart-detail').each(function() {
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail')();
-			$(this).on('click', function () {
+			$(this).on('click', function() {
 				swal(nameProduct, "is added to cart !", "success");
 			});
 		});
-
 	</script>
 	<!--===============================================================================================-->
 	<script src="{{ asset('/vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
 	<script>
-		$('.js-pscroll').each(function () {
+		$('.js-pscroll').each(function() {
 			$(this).css('position', 'relative');
 			$(this).css('overflow', 'hidden');
 			var ps = new PerfectScrollbar(this, {
@@ -1818,7 +1675,7 @@
 				wheelPropagation: false,
 			});
 
-			$(window).on('resize', function () {
+			$(window).on('resize', function() {
 				ps.update();
 			})
 		});

@@ -38,9 +38,10 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'customers', // Use the custom user provider
+            'provider' => 'users',
         ],
     ],
+
 
 
     /*
@@ -65,12 +66,8 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-    
-        'custom' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\CustomUser::class,
-        ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------

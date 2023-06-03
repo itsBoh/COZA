@@ -45,13 +45,13 @@
                     </div>
 
                     <div class="right-top-bar flex-w h-full">
-						<a href="{{ url('account-profile') }}" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
-						<a href="{{ url('index') }}" class="flex-c-m trans-04 p-lr-25">
-							Log In
-						</a>
-					</div>
+                        <a href="{{ url('account-profile') }}" class="flex-c-m trans-04 p-lr-25">
+                            My Account
+                        </a>
+                        <a href="{{ url('index') }}" class="flex-c-m trans-04 p-lr-25">
+                            Log In
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -67,7 +67,7 @@
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li>
-                                <a href="{{ url('home') }}">Home</a>
+                                <a href="{{ url('') }}">Home</a>
                             </li>
 
                             <li>
@@ -94,13 +94,11 @@
                             <i class="zmdi zmdi-search"></i>
                         </div>
 
-                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                            data-notify="2">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
                             <i class="zmdi zmdi-shopping-cart"></i>
                         </div>
 
-                        <div class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-wishlist"
-                            data-notify="0" id="wishlist-btn">
+                        <div class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-wishlist" data-notify="0" id="wishlist-btn">
                             <i class="zmdi zmdi-favorite-outline"></i>
                         </div>
                     </div>
@@ -121,13 +119,11 @@
                     <i class="zmdi zmdi-search"></i>
                 </div>
 
-                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-                    data-notify="2">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
                     <i class="zmdi zmdi-shopping-cart"></i>
                 </div>
 
-                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-wishlist"
-                    data-notify="0">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-wishlist" data-notify="0">
                     <i class="zmdi zmdi-favorite-outline"></i>
                 </div>
             </div>
@@ -152,21 +148,18 @@
 
                 <li>
                     <div class="right-top-bar flex-w h-full">
-						<a href="{{ url('account-profile') }}" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
-						<a href="{{ url('index') }}" class="flex-c-m trans-04 p-lr-25">
-							Log In
-						</a>
-					</div>
+                        <a href="{{ url('account-profile') }}" class="flex-c-m trans-04 p-lr-25">
+                            My Account
+                        </a>
+                        <a href="{{ url('index') }}" class="flex-c-m trans-04 p-lr-25">
+                            Log In
+                        </a>
+                    </div>
                 </li>
             </ul>
             <ul class="main-menu-m">
                 <li>
-                    <a href="{{ url('index') }}">Home</a>
-                    <span class="arrow-main-menu-m">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </span>
+                    <a href="{{ url('home') }}">Home</a>
                 </li>
 
                 <li>
@@ -174,11 +167,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('shoping-cart') }}" class="label1 rs1" data-label1="hot">Features</a>
-                </li>
-
-                <li>
-                    <a href="{{ url('blog') }}">Blog</a>
+                    <a href="{{ url('shoping-cart') }}">Cart</a>
                 </li>
 
                 <li>
@@ -236,7 +225,7 @@
                             </a>
 
                             <span class="header-cart-item-info">
-                                1 x $19.00
+                                1 x Rp 190.000
                             </span>
                         </div>
                     </li>
@@ -252,7 +241,7 @@
                             </a>
 
                             <span class="header-cart-item-info">
-                                1 x $39.00
+                                1 x Rp 390.000
                             </span>
                         </div>
                     </li>
@@ -268,7 +257,7 @@
                             </a>
 
                             <span class="header-cart-item-info">
-                                1 x $17.00
+                                1 x Rp 170.000
                             </span>
                         </div>
                     </li>
@@ -276,17 +265,15 @@
 
                 <div class="w-full">
                     <div class="header-cart-total w-full p-tb-40">
-                        Total: $75.00
+                        Total: Rp 750.000
                     </div>
 
                     <div class="header-cart-buttons flex-w w-full">
-                        <a href="{{ url('shoping-cart') }}"
-                            class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                        <a href="{{ url('shoping-cart') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
                             View Cart
                         </a>
 
-                        <a href="{{ url('shoping-cart') }}"
-                            class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+                        <a href="{{ url('shoping-cart') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
                             Check Out
                         </a>
                     </div>
@@ -325,8 +312,7 @@
                                     Rp 190.000
                                 </span>
 
-                                <button class="add-to-cart-btn" data-product-name="White Shirt Pleat"
-                                    data-product-price="19.00">Add to Cart</button>
+                                <button class="add-to-cart-btn" data-product-name="White Shirt Pleat" data-product-price="19.00">Add to Cart</button>
                             </div>
                         </div>
                     </li>
@@ -345,8 +331,7 @@
                                     Rp 390.000
                                 </span>
 
-                                <button class="add-to-cart-btn" data-product-name="Converse All Star"
-                                    data-product-price="39.00">Add to Cart</button>
+                                <button class="add-to-cart-btn" data-product-name="Converse All Star" data-product-price="39.00">Add to Cart</button>
                             </div>
                         </div>
                     </li>
@@ -365,8 +350,7 @@
                                     Rp 170.000
                                 </span>
 
-                                <button class="add-to-cart-btn" data-product-name="Nixon Porter Leather"
-                                    data-product-price="17.00">Add to Cart</button>
+                                <button class="add-to-cart-btn" data-product-name="Nixon Porter Leather" data-product-price="17.00">Add to Cart</button>
                             </div>
                         </div>
                     </li>
@@ -377,19 +361,19 @@
                     </div>
 
                     <div class="header-wish-buttons flex-w w-full">
-                        <a href="{{ url('wishlist') }}"
-                            class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                        <a href="{{ url('wishlist') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
                             View Wishlist
                         </a>
 
                         <!-- <a href="{{ url('wishlist') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-								Check Out
-							</a> -->
+									Check Out
+								</a> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- breadcrumb -->
     <div class="container">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -398,7 +382,7 @@
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
             <a href="{{ url('shoping-cart') }}" class="stext-109 cl8 hov-cl1 trans-04">
-                Home
+                Cart
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
             <span class="stext-109 cl4">
@@ -408,34 +392,33 @@
     </div>
 
     <!-- payment -->
-    <form action="home"> <!--action belum diganti handler -->
+    <form action="home" method="post">
         <div>
             <div class='container1'>
                 <div class='window1'>
                     <div class='order-info'>
                         <div class='order-info-content'>
                             <h2>Order Summary</h2>
+                            @foreach($results as $key => $result)
                             <div class='line'></div>
                             <table class='order-table'>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <img class='full-width' src="{{ asset('/images/item-cart-04.jpg') }}" alt="IMG"></img>
-                                        </td>
-                                        <td>
-                                            <br> <span class="thin">Fresh Strawberries</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class='price'>Rp 360.000</div>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tr>
+                                    <td>
+                                        <img class='full-width' src="images/item-cart-04.jpg" alt="IMG"></img>
+                                    </td>
+                                    <td>
+                                        <span class="thin">{{$result->PROD_NAME}}</span>
+                                        <input type="hidden" name="">
+                                    </td>
+                                    <td class="order-left">
+                                        <div class='price'>Rp {{$result->Price}}</div>
+                                    </td>
+                                </tr>
 
                             </table>
-                            <div class='line'></div>
-                            <table class='order-table'>
+                            @endforeach
+
+                            <!-- <table class='order-table'>
                                 <tbody>
                                     <tr>
                                         <td>
@@ -451,18 +434,12 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table> -->
                             <div class='line'></div>
                             <div class='total'>
-                                <span style='float:left;'>
-                                    <div class='thin dense'>VAT 19%</div>
-                                    <div class='thin dense'>Delivery</div>
-                                    TOTAL
-                                </span>
                                 <span style='float:right; text-align:right;'>
-                                    <div class='thin dense'>Rp 520.000</div>
-                                    <div class='thin dense'>Rp 0</div>
-                                    Rp 520.000
+                                    <div class='thin dense'>Total</div>
+                                    Rp {{$result2[0]->Price}}
                                 </span>
                             </div>
                         </div>
@@ -485,24 +462,22 @@
                                     </td>
                                 </tr>
                             </table>
-                            <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png'
-                                height='80' class='credit-card-image' id='credit-card-image'></img>
+                            <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
                             Card Number
-                            <input class='input-field'></input>
+                            <input class='input-field' required></input>
                             Card Holder
-                            <input class='input-field'></input>
+                            <input class='input-field' required></input>
                             <table class='half-input-table'>
                                 <tr>
                                     <td> Expires
-                                        <input class='input-field'></input>
+                                        <input class='input-field' required></input>
                                     </td>
                                     <td>CVC
-                                        <input class='input-field'></input>
+                                        <input class='input-field' required></input>
                                     </td>
                                 </tr>
                             </table>
-                            <button class='pay-btn' type="submit" data-bs-toggle="modal"
-                                data-bs-target="#COModal">Checkout</button>
+                            <button class='pay-btn' type="submit" data-bs-toggle="modal" data-bs-target="#COModal">Checkout</button>
                         </div>
                     </div>
                 </div>
@@ -657,8 +632,7 @@
 
                         <form>
                             <div class="wrap-input1 w-full p-b-4">
-                                <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email"
-                                    placeholder="email@example.com">
+                                <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
                                 <div class="focus-input1 trans-04"></div>
                             </div>
 
@@ -685,7 +659,9 @@
 
                     <p class="stext-107 cl6 txt-center">
                         Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script> All rights reserved | Made by
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script> All rights reserved | Made by
                         MonoMode</a>
 
                     </p>
@@ -711,7 +687,7 @@
         <!--===============================================================================================-->
         <script src="{{ asset('/vendor/select2/select2.min.js') }}"></script>
         <script>
-            $(".js-select2").each(function () {
+            $(".js-select2").each(function() {
                 $(this).select2({
                     minimumResultsForSearch: 20,
                     dropdownParent: $(this).next('.dropDownSelect2')
@@ -723,7 +699,7 @@
         <!--===============================================================================================-->
         <script src="{{ asset('/vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
         <script>
-            $('.js-pscroll').each(function () {
+            $('.js-pscroll').each(function() {
                 $(this).css('position', 'relative');
                 $(this).css('overflow', 'hidden');
                 var ps = new PerfectScrollbar(this, {
@@ -732,7 +708,7 @@
                     wheelPropagation: false,
                 });
 
-                $(window).on('resize', function () {
+                $(window).on('resize', function() {
                     ps.update();
                 })
             });

@@ -30,6 +30,9 @@
 </head>
 
 <body class="u-body u-hide-header u-xl-mode" data-style="blank" data-posts="">
+  @if(session('error'))
+    <div>{{ session('error') }}</div>
+  @endif
   <section class="u-align-center u-clearfix u-block-22fd-65" custom-posts-hash="T" data-section-properties="{&quot;margin&quot;:&quot;both&quot;,&quot;stretch&quot;:true}" data-id="22fd" data-style="login-form-1" id="sec-07dc">
 
     <div class="u-clearfix u-sheet u-block-22fd-68">
@@ -42,21 +45,21 @@
       <div class="u-align-center u-container-style u-expanded-width-xs u-group u-radius-30 u-shape-round u-white u-block-22fd-46" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
         <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-block-22fd-47"><img class="u-expanded-width-md u-expanded-width-sm u-image u-image-contain u-image-default u-block-22fd-64" src="{{ asset('/images/icons/logo-01.png') }}" alt="" data-image-width="1663" data-image-height="213">
           <div class="u-form u-login-control u-block-22fd-49" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
-            <form action="home" method="GET" action="/login" class="u-clearfix u-form-custom-backend u-form-spacing-20 u-form-vertical u-inner-form" source="custom" name="formLogin" style="padding: 30px;" data-services="" redirect="true">
+            <form method="POST" action="{{ route('login-user') }}" class="u-clearfix u-form-custom-backend u-form-spacing-20 u-form-vertical u-inner-form" source="custom" name="formLogin" style="padding: 30px;" data-services="" redirect="true">
               @csrf
               <div class="u-form-group u-form-name u-block-22fd-50">
-                <label for="username-a30d" class="u-custom-font u-font-montserrat u-label u-block-22fd-51">Username
+                <label for="username" class="u-custom-font u-font-montserrat u-label u-block-22fd-51">Username
                   *</label>
-                <input type="text" placeholder="Enter your Username" id="username-a30d" name="username" class="u-input u-input-rectangle u-block-22fd-52" required="" spellcheck="false">
+                <input type="text" placeholder="Enter your Username" id="username" name="CUST_USERNAME" class="u-input u-input-rectangle u-block-22fd-52" required spellcheck="false">
               </div>
               <div class="u-form-group u-block-22fd-53">
-                <label for="password-a30d" class="u-custom-font u-font-montserrat u-label u-block-22fd-54">Password
+                <label for="password" class="u-custom-font u-font-montserrat u-label u-block-22fd-54">Password
                   *</label>
-                <input type="password" placeholder="Enter your Password" id="password-a30d" name="password" class="u-input u-input-rectangle u-block-22fd-55" required="">
+                <input type="password" placeholder="Enter your Password" id="password" name="CUST_PASSWORD" class="u-input u-input-rectangle u-block-22fd-55" required>
               </div>
               <div class="u-form-checkbox u-form-group u-block-22fd-56">
-                <input type="checkbox" id="checkbox-a30d" name="remember" value="On" class="u-field-input">
-                <label for="checkbox-a30d" class="u-block-22fd-57 u-field-label">Remember me</label>
+                <input type="checkbox" id="remember" name="remember" value="On" class="u-field-input">
+                <label for="remember" class="u-block-22fd-57 u-field-label">Remember me</label>
               </div>
 
               <div class="u-form-group u-form-submit u-block-22fd-58">
@@ -77,9 +80,3 @@
 </body>
 
 </html>
-
-@if(session('success'))
-   <div class="alert alert-success">
-       {{ session('success') }}
-   </div>
-@endif

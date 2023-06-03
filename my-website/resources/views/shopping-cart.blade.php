@@ -66,7 +66,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="{{ url('home') }}">Home</a>
+								<a href="{{ url('') }}">Home</a>
 							</li>
 
 							<li>
@@ -93,13 +93,11 @@
 							<i class="zmdi zmdi-search"></i>
 						</div>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-							data-notify="2">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
-						<div class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-wishlist"
-							data-notify="0" id="wishlist-btn">
+						<div class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-wishlist" data-notify="0" id="wishlist-btn">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						</div>
 					</div>
@@ -120,13 +118,11 @@
 					<i class="zmdi zmdi-search"></i>
 				</div>
 
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-					data-notify="2">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-wishlist"
-					data-notify="0">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-wishlist" data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>
 				</div>
 			</div>
@@ -272,13 +268,11 @@
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
-						<a href="{{ url('shoping-cart') }}"
-							class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						<a href="{{ url('shoping-cart') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 							View Cart
 						</a>
 
-						<a href="{{ url('shoping-cart') }}"
-							class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+						<a href="{{ url('shoping-cart') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 							Check Out
 						</a>
 					</div>
@@ -303,65 +297,33 @@
 			</div>
 			<div class="header-wishlist-content flex-w js-pscroll">
 				<ul class="header-wishlist-wrapitem w-full">
+				@foreach($wishlists as $wish)
 					<li class="header-wishlist-item flex-w flex-t m-b-12">
 						<div class="header-wishlist-item-img">
 							<img src="{{ asset('/images/item-cart-01.jpg') }}" alt="IMG">
 						</div>
+						
+						<form action="route('cart.updateWishlist" method="post">
+							<div class="header-wishlist-item-txt p-t-8">
+								<input type="hidden" name="prodid" value="{{ $wish->id}}">
+								<input type="hidden" name="wishlistid" value="{{ $wish->wishlist_id}}">
+								<a href="{{ url('#') }}" class="header-wishlist-item-name m-b-18 hov-cl1 trans-04">
+									{{ $wish->name }}
+								</a>
+								<div class="header-wishlist-item-details">
+									<span class="header-wishlist-item-info">
+										Rp {{ $wish->price }}
+									</span>
 
-						<div class="header-wishlist-item-txt p-t-8">
-							<a href="{{ url('#') }}" class="header-wishlist-item-name m-b-18 hov-cl1 trans-04">
-								White Shirt Pleat
-							</a>
-							<div class="header-wishlist-item-details">
-								<span class="header-wishlist-item-info">
-									Rp 190.000
-								</span>
-
-								<button class="add-to-cart-btn" data-product-name="White Shirt Pleat"
-									data-product-price="19.00">Add to Cart</button>
+									<button class="add-to-cart-btn" data-product-name="White Shirt Pleat" data-product-price="19.00">
+										Add to Cart
+									</button>
+								</div>
 							</div>
-						</div>
+						</form>
+						
 					</li>
-
-					<li class="header-wishlist-item flex-w flex-t m-b-12">
-						<div class="header-wishlist-item-img">
-							<img src="{{ asset('/images/item-cart-02.jpg') }}" alt="IMG">
-						</div>
-
-						<div class="header-wishlist-item-txt p-t-8">
-							<a href="{{ url('#') }}" class="header-wishlist-item-name m-b-18 hov-cl1 trans-04">
-								Converse All Star
-							</a>
-							<div class="header-wishlist-item-details">
-								<span class="header-wishlist-item-info">
-									Rp 390.000
-								</span>
-
-								<button class="add-to-cart-btn" data-product-name="Converse All Star"
-									data-product-price="39.00">Add to Cart</button>
-							</div>
-						</div>
-					</li>
-
-					<li class="header-wishlist-item flex-w flex-t m-b-12">
-						<div class="header-wishlist-item-img">
-							<img src="{{ asset('/images/item-cart-03.jpg') }}" alt="IMG">
-						</div>
-
-						<div class="header-wishlist-item-txt p-t-8">
-							<a href="{{ url('#') }}" class="header-wishlist-item-name m-b-18 hov-cl1 trans-04">
-								Nixon Porter Leather
-							</a>
-							<div class="header-wishlist-item-details">
-								<span class="header-wishlist-item-info">
-									Rp 170.000
-								</span>
-
-								<button class="add-to-cart-btn" data-product-name="Nixon Porter Leather"
-									data-product-price="17.00">Add to Cart</button>
-							</div>
-						</div>
-					</li>
+					@endforeach
 				</ul>
 				<div class="w-full">
 					<div class="header-wish-total w-full p-tb-40">
@@ -369,8 +331,7 @@
 					</div>
 
 					<div class="header-wish-buttons flex-w w-full">
-						<a href="{{ url('wishlist') }}"
-							class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						<a href="{{ url('wishlist') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 							View Wishlist
 						</a>
 
@@ -400,7 +361,8 @@
 
 
 	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85" action="{{ url('shopping-checkout') }}">
+	<form class="bg0 p-t-75 p-b-85" method="post" action="{{ route('cart.update') }}">
+		@csrf
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
@@ -414,56 +376,33 @@
 									<th class="column-4">Quantity</th>
 									<th class="column-5">Total</th>
 								</tr>
-
+								@foreach($results as $key => $result)
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
 											<img src="{{ asset('/images/item-cart-04.jpg') }}" alt="IMG">
 										</div>
 									</td>
-									<td class="column-2">Fresh Strawberries</td>
-									<td class="column-3">Rp 360.000</td>
+									<input type="hidden" name="cartid[{{$key}}]" value="{{$result->CART_ID}}">
+									<input type="hidden" name="prodid[{{$key}}]" value="{{$result->PROD_ID}}">
+									<td class="column-2">{{$result->PROD_NAME}}</td>
+									<td class="column-3">Rp {{$result->PROD_PRICE}}</td>
 									<td class="column-4">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
 											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
+												<button type="button" class="decrease-btn fs-16 zmdi zmdi-minus"></button>
 											</div>
 
-											<input class="mtext-104 cl3 txt-center num-product" type="number"
-												name="num-product1" value="1">
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="quantity[{{$key}}]" value="{{$result->CART_QTY}}">
 
 											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
+												<button type="button" class="increase-btn fs-16 zmdi zmdi-plus"></button>
 											</div>
 										</div>
 									</td>
-									<td class="column-5">Rp 360.000</td>
+									<td class="column-5">Rp {{$result->Price}}</td>
 								</tr>
-
-								<tr class="table_row">
-									<td class="column-1">
-										<div class="how-itemcart1">
-											<img src="{{ asset('/images/item-cart-05.jpg') }}" alt="IMG">
-										</div>
-									</td>
-									<td class="column-2">Lightweight Jacket</td>
-									<td class="column-3">Rp 160.000</td>
-									<td class="column-4">
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product" type="number"
-												name="num-product2" value="1">
-
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-									</td>
-									<td class="column-5">Rp 160.000</td>
-								</tr>
+								@endforeach
 							</table>
 						</div>
 
@@ -476,10 +415,9 @@
 								</div>
 							</div>
 
-							<div
-								class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
+							<button type="submit" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
 								Update Cart
-							</div>
+							</button>
 						</div>
 					</div>
 				</div>
@@ -499,7 +437,7 @@
 
 							<div class="size-209">
 								<span class="mtext-110 cl2">
-									Rp 520.000
+									Rp {{$total[0]->Price}}
 								</span>
 							</div>
 						</div>
@@ -512,40 +450,10 @@
 							</div>
 
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-								<p class="stext-111 cl6 p-t-2">
-									There are no shipping methods available. Please double check your address, or
-									contact us if you need any help.
-								</p>
-
 								<div class="p-t-15">
-									<span class="stext-112 cl8">
-										Calculate Shipping
-									</span>
-
-									<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-										<select class="js-select2" name="time">
-											<option>Select a country...</option>
-											<option>USA</option>
-											<option>UK</option>
-										</select>
-										<div class="dropDownSelect2"></div>
-									</div>
 
 									<div class="bor8 bg0 m-b-12">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="state"
-											placeholder="State /  country">
-									</div>
-
-									<div class="bor8 bg0 m-b-22">
-										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode"
-											placeholder="Postcode / Zip">
-									</div>
-
-									<div class="flex-w">
-										<div
-											class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
-											Update Totals
-										</div>
+										<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="{{$address[0]->CUST_ADDRESS}}">
 									</div>
 
 								</div>
@@ -561,19 +469,43 @@
 
 							<div class="size-209 p-t-1">
 								<span class="mtext-110 cl2">
-									Rp 520.000
+									Rp {{$total[0]->Price}}
 								</span>
 							</div>
 						</div>
-						<button type="submit"
-							class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+						<a href="{{url('checkouts')}}" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 							Proceed to Checkout
-						</button>
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</form>
+
+	<!-- Display the cart products -->
+	<!-- <table>
+		<thead>
+			<tr>
+				<th>Product Name</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach ($results as $result)
+			<tr>
+				<td>{{ $result->PROD_NAME }}</td>
+				<td>{{ $result->PROD_PRICE }}</td>
+				<td>
+					<input type="number" name="quantity" value="{{ $result->CART_QTY }}">
+				</td>
+				<td>{{ $result->Price}}</td>
+			</tr>
+			@endforeach
+		</tbody>
+	</table> -->
+
 
 
 
@@ -702,8 +634,7 @@
 
 					<form>
 						<div class="wrap-input1 w-full p-b-4">
-							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email"
-								placeholder="email@example.com">
+							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
 							<div class="focus-input1 trans-04"></div>
 						</div>
 
@@ -730,7 +661,9 @@
 
 				<p class="stext-107 cl6 txt-center">
 					Copyright &copy;
-					<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by
+					<script>
+						document.write(new Date().getFullYear());
+					</script> All rights reserved | Made by
 					MonoMode</a>
 
 				</p>
@@ -756,7 +689,7 @@
 	<!--===============================================================================================-->
 	<script src="{{ asset('/vendor/select2/select2.min.js') }}"></script>
 	<script>
-		$(".js-select2").each(function () {
+		$(".js-select2").each(function() {
 			$(this).select2({
 				minimumResultsForSearch: 20,
 				dropdownParent: $(this).next('.dropDownSelect2')
@@ -768,7 +701,7 @@
 	<!--===============================================================================================-->
 	<script src="{{ asset('/vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
 	<script>
-		$('.js-pscroll').each(function () {
+		$('.js-pscroll').each(function() {
 			$(this).css('position', 'relative');
 			$(this).css('overflow', 'hidden');
 			var ps = new PerfectScrollbar(this, {
@@ -777,7 +710,7 @@
 				wheelPropagation: false,
 			});
 
-			$(window).on('resize', function () {
+			$(window).on('resize', function() {
 				ps.update();
 			})
 		});

@@ -3622,8 +3622,7 @@ ul li:hover {
   z-index:10;
 }
 .order-info {
-  height:100%;
-  width:50%;
+  width: 80%;
   padding-left:25px;
   padding-right:25px;
   box-sizing:border-box;
@@ -3649,6 +3648,9 @@ ul li:hover {
 .order-table {
     position:relative;
 }
+.order-left{
+  text-align: right;
+}
 .line {
   height:1px;
   width:100%;
@@ -3658,11 +3660,9 @@ ul li:hover {
 }
 .order-table td:last-of-type {
   vertical-align:top;
-  padding-left:25px;
 }
 .order-info-content {
-  table-layout:fixed;
-
+  width: 100%;
 }
 
 .full-width {
